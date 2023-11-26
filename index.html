@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>电子课表</title>
+  <meta charet="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+  <div class="topContainer">
+    <iframe src="./clock/index.html" class="clock"></iframe>
+    <div class="countdown"> 距高考仅剩 <div class="num">195</div> 天</div>
+  </div>
+  <div class="base_container">
+    <div class="char_box">
+      <div class="char"> 课 </div>
+      <div class="char"> 课 </div>
+      <div class="char"> 课 </div>
+      <div class="char"> 课 </div>
+      <div class="char"> 课 </div>
+      <div class="char" id="preselect"> 课 </div>
+      <div class="char" id="t"> 课 </div>
+      <div class="char"> 课 </div>
+      <div class="char"> 课 </div>
+      <div class="char"> 课 </div>
+      <div class="char"> 课 </div>
+    </div>
+    <div class="bubble" id="bubble">08:42</div>
+  </div>
+</body>
+<script>
+  function moveBubble() {
+    let selected_char = document.getElementById('selected')
+    let preselect_char = document.getElementById('preselect')
+    let bubble = document.getElementById('bubble')
+    if (selected_char) {
+      bubble.style.top = selected_char.offsetTop + selected_char.offsetHeight / 2.0 - bubble.offsetHeight / 2.0 + 'px'
+    }
+    if (preselect_char) {
+      bubble.style.top = preselect_char.offsetTop - bubble.offsetHeight / 2.0 + 'px'
+    }
+  }
+  moveBubble()
+  setTimeout(() => {
+    let preselect_char = document.getElementById('preselect')
+    preselect_char.id = 'selected'
+    moveBubble()
+  }, 2000)
+
+
+
+
+
+</script>
+
+</html>

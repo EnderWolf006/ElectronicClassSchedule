@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "微软雅黑";
+    color: white;
+    overflow: visible;
+}
+
+html {
+    background-color: #000;
+}
+
+.topContainer {
+    position: fixed;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    perspective: 100px;
+}
+
+.clock {
+    height: 64px;
+    width: 400px;
+    border-width: 0;
+}
+
+.countdown {
+    font-size: 30px;
+    text-align: center;
+    font-family: "方正舒体";
+    transform: rotateX(-8deg);
+    transform-style: flat;
+    text-shadow: 1.5px 1.5px 6px rgb(255, 0, 0)
+}
+
+.countdown .num {
+    font-size: 36px;
+    display: inline;
+    font-family: "方正舒体";
+    color: rgb(255, 36, 36);
+    text-shadow: .5px .5px 4px rgba(255, 255, 255, 0.4), -.5px -.5px 4px rgba(255, 255, 255, 0.4);
+    font-weight: 800;
+
+}
+
+.base_container {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.char_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: calc(100vh - 30px);
+}
+
+.char_box .char {
+    font-weight: 700;
+    font-size: 30px;
+}
+
+#selected {
+    color: rgb(32, 255, 32);
+}
+
+#preselect {
+    animation: preselect 1.2s;
+    animation-iteration-count: infinite;
+}
+
+
+
+@keyframes preselect {
+    0% {
+        color: rgba(255, 255, 255, 0.3)
+    }
+
+    50% {
+        color: rgb(32, 255, 32);
+    }
+
+    100% {
+        color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+.bubble {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    font-size: 32px;
+    font-weight: bold;
+    font-family: Arial;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #000;
+    transform: translateX(calc(-100% - 20px));
+    z-index: 2;
+    padding: 4px 8px;
+    transition: all 1s ease-in-out;
+}
+
+.bubble::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(calc(100% - 2px), -50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid rgb(255, 255, 255);
+    border-top: 10px solid rgba(0,0,0,0);
+    border-bottom: 10px solid rgba(255, 0, 0, 0);
+}
+
+.bubble-top::after {
+    top: 3px;
+    transform: translateX(calc(100% - 2px));
+}
+
+.bubble-bottom::after {
+    bottom: -3px;
+    transform: translateX(calc(100% - 2px));
+}
